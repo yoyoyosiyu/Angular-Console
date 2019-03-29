@@ -1,0 +1,8 @@
+<p>
+  marketplace works!
+</p>
+
+<div *ngFor="let album of albums" (click)="goToDetailPage(album)" class="panel panel-default">
+  <h3><em>{{album.title}}</em> by {{album.artist}}</h3>
+  <a [routerLink]="['/albums', album.id]" [queryParams]="{debug: true}">1111</a>
+</div>
