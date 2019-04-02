@@ -1,33 +1,27 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent} from './welcome/welcome.component';
-import { AboutComponent} from './about/about.component';
-import { MarketplaceComponent} from './marketplace/marketplace.component';
-import {AlbumDetailComponent} from './album-detail/album-detail.component';
-import {ComposeMessageComponent} from './compose-message/compose-message.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {HomeComponent} from './home/home.component';
+import {ProductListComponent} from './products/product-list/product-list.component';
+import {ProductInfoComponent} from './products/product-info/product-info.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: WelcomeComponent
+    component: HomeComponent
   },
   {
-    path: 'about',
-    component: AboutComponent
+    path: 'products',
+    component: ProductListComponent
   },
   {
-    path: 'marketplace',
-    component: MarketplaceComponent
+    path: 'products/:id',
+    component: ProductInfoComponent
   },
   {
-    path: 'albums/:id',
-    component: AlbumDetailComponent
-  },
-  {
-    path: 'compose',
-    component: ComposeMessageComponent,
-    outlet: 'popup'
-  },
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

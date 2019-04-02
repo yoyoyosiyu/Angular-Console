@@ -1,0 +1,24 @@
+<nz-table #basicTable [nzData]="data" [nzTotal]="data.totalElements" [nzPageSize]="data.pageSize" [nzShowQuickJumper]="true" [nzFrontPagination]="false"
+          (nzPageIndexChange)="getTableData($event)">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>名称</th>
+    <th>描述</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of data.content">
+    <td>{{ data.id }}</td>
+    <td>{{ data.name }}</td>
+    <td>{{ data.description }}</td>
+    <td>
+      <a routerLink="/products/{{data.id}}">编辑</a>
+      <nz-divider nzType="vertical"></nz-divider>
+      <a nz-popconfirm nzTitle="Are you sure delete this task?" (nzOnConfirm)="confirm(data)" (nzOnCancel)="cancel()"
+      >删除</a>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
